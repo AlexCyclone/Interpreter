@@ -6,8 +6,8 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
+        
         Dictionary dic = fillDictionary();
-
         File in = new File("English.in");
         File out = new File("Russian.out");
 
@@ -16,6 +16,10 @@ public class Main {
         } catch (IllegalArgumentException | IOException e) {
             e.printStackTrace();
         }
+        
+        dic.addWord("Kiev", "ส่ๅโ");
+        saveDictionary(dic);
+        
     }
 
     public static Dictionary fillDictionary() {
@@ -29,5 +33,15 @@ public class Main {
         }
         
         return dic;
+    }
+    
+    public static void saveDictionary(Dictionary dic) {
+        File f = new File("dictionary2.txt");
+
+        try {
+            DictionaryLoader.writeDictionary(f, dic);
+        } catch (IllegalArgumentException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }
