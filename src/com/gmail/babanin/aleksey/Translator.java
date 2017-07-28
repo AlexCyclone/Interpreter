@@ -37,12 +37,12 @@ public interface Translator {
         StringBuilder sb = new StringBuilder();
         int dif = words.length - separators.length;
         for (int i = 0; i < words.length; i++) {
-            if (dif != 0) {
+            if (dif <= 0) {
+                sb.append(separators[i]);
+            } else {
                 if (i >= dif) {
                     sb.append(separators[i - dif]);
                 }
-            } else {
-                sb.append(separators[i]);
             }
             sb.append(dic.translate(words[i]).toLowerCase());
         }
